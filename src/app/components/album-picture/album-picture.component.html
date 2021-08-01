@@ -1,0 +1,14 @@
+<article class="picture-item">
+    <img src={{thumb}} alt="some image">
+    <h3>
+        <span>{{title}} </span>
+        <span class="deleteSpan">
+            <i antIcon 
+            type="delete" 
+            theme="outline"
+            (click)="fireDeletePicEvent(imgId)"
+            >
+        </i></span>
+        
+    </h3> 
+</article>

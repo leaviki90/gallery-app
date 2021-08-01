@@ -1,0 +1,46 @@
+<div class="gallery-top">
+
+    <div class="top-left">
+        <h2>
+            Foto albumi familije Marković
+        </h2>
+    </div>
+    <div class="top-right">
+        <i antIcon
+            [class]="rowGrid ? 'active' : ''"
+            type="menu"
+            theme="outline"
+            (click)="setRowGrid(true)"
+            >
+        </i>
+        <i antIcon
+            [class]="!rowGrid ? 'active' : ''"
+            type="appstore"
+            theme="fill"
+            (click)="setRowGrid(false)"
+            >
+        </i>
+    </div>
+
+</div>
+
+<div class="gallery-wrapper" [class]="rowGrid ? 'row-grid' : ''">
+
+    <ng-template [ngIf]="isAlbumsReady && isCoversReady" [ngIfElse]="loading">
+        <ng-container *ngFor = "let n of albumArray; let index = index">
+
+            <app-galery-item
+                [title]="albumArray[index]['title']"
+                [author]="getUserName(albumArray[index]['userId'])"
+                [albumLink]="albumArray[index]['id']"
+                [albumCover]="albumCovers[albumArray[index]['id']]"
+            ></app-galery-item>
+        
+        </ng-container>
+    </ng-template>
+
+    <ng-template #loading>
+        <div>Loading...</div>
+    </ng-template>
+
+</div>
